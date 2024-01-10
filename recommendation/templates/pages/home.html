@@ -1,0 +1,92 @@
+{% extends 'pages/base.html' %} 
+{% load static %} 
+{% block content %}
+
+<section class="container text-center">
+  <br><br><br><br>
+  <h3>Welcome</h3>
+
+  <hr> <br>
+  <div class="row">
+    <div class="col-md-3">
+      <a href="{% url 'courses' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/recc.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              recommeded courses
+            </h5>
+            Recommendation system are smart tools that suggest best courses to you based on their preferences and behavior.
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="{% url 'notes' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/notess.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Notes
+            </h5>
+             You can organize all your notes in one single place, make your daily activities easier and keep your focus on what really matters
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="{% url 'homework' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/hm.jpeg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Homework
+            </h5>
+            Homework can also help you develop habits of self-discipline, responsibility, and time management, They will be displayed prioritised by deadlines
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="{% url 'todo' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/todo1.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              To Do
+            </h5>
+            Create your to do list for better task management and getting things done much easier
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <br><br>
+      <a href="{% url 'wiki' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/wiki.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              WikiPedia
+            </h5>
+            Homework and Assignments? Search wikipedia to get fast results
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <br><br>
+      <a href="{% url 'GPACalculator' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/gpa.jpeg' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              GPA_Calculator
+            </h5>
+            Check out the GPA_Calculator table, that helps you to calculate more familiar courses of your choice.
+          </div>
+        </div>
+      </a>
+    </div>
+</section>
+{% endblock content %}
