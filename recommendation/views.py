@@ -1,169 +1,128 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from . forms import *
 from django.contrib import messages
 from django.views import generic
 import requests
 import wikipedia
+from django.contrib.auth.decorators import login_required
+from .forms import RatingForm
+from recommendation.testato import *
 # Create your views here.
 
-
-def home(request):
-    return render(request, 'pages/home.html', {})
-
+@login_required
 def notes(request):
     if request.method == "POST":
         form = NotesForm(request.POST)
         if form.is_valid():
-            notes = Notes(user=request.user, title=request.POST['title'], description=request.POST['description'])
+            notes = Notes(
+                user=request.user, title=request.POST['title'], description=request.POST['description'])
             notes.save()
-        messages.success(request,f"Notes Added from {request.user.username} Successfuly")    
+        messages.success(
+            request, f"Notes Added from {request.user.username} Successfuly")
+        return redirect("notes")
     else:
         form = NotesForm()
     notes = Notes.objects.filter(user=request.user)
-    context = {'notes':notes,'form':form}
+    context = {'notes': notes, 'form': form}
     return render(request, 'pages/notes.html', context)
 
-def delete_note(request,pk=None):
+@login_required
+def delete_note(request, pk=None):
     Notes.objects.get(id=pk).delete()
     return redirect("notes")
+@login_required
+def get_note(request, pk=None):
+    nd= Notes.objects.get(id=pk)
+    context = {'Notes': nd}
+    return render(request, 'pages/notes_detail.html', context)
 
-class NotesDetailView(generic.DetailView):
-    models = Notes
-    def get_queryset(self):
-        """Return Notes """
-        return Notes.objects.order_by('id')
+def rate_item(request, item_id):
+    item = get_object_or_404(Item, pk=item_id)
+    rating_id = request.session.get(SESSION_RATING_ID, None)
 
-def homework(request):
-    if request.method == "POST":
-        form = NotesForm(request.POST)
-        if form.is_valid():
-           try:
-               finished = request.POST['is_finished']
-               if finished == 'on':
-                   finished = True
-               else:
-                   finished = False  
-           except:
-               finished = False
-               homeworks = Homework(user=request.user,
-                                    subject = request.POST['subject'],
-                                     title=request.POST['title'], 
-                                    description=request.POST['description'],
-                                    due = request.POST['due'],
-                                    is_finished = finished
-                                    )
-           homeworks.save()
-        messages.success(request,f"Homeworks Added from {request.user.username} Successfuly")    
-    else:
-       form = HomeworkForm()
-    homework = Homework.objects.filter(user=request.user)
-    if len(homework) == 0:
-        homework_done = True
-    else:
-        homework_done = False
-
-    context = {'homeworks':homework,'homeworks_done':homework_done,'form':form}
-    return render(request, 'pages/homework.html',context)
-
-def update_homework(request,pk=None):
-    homework = Homework.objects.get(id=pk)
-    if homework.is_finished == True:
-        homework.is_finished = False
-    else:
-        homework.is_finished = True
-    homework.save()
-    return redirect('homework')
-
-def delete_homework(request,pk=None):
-    Homework.objects.get(id=pk).delete()
-    return redirect("homework")
-
-def todo(request):
-    if request.method == "POST":
-        form = TodoForm(request.POST)
-        if form.is_valid():
-           try:
-               finished = request.POST['is_finished']
-               if finished == 'on':
-                   finished = True
-               else:
-                   finished = False  
-           except:
-               finished = False
-               todos = Todo(user=request.user,
-                                     title=request.POST['title'], 
-                                    is_finished = finished)
-           todos.save()
-           messages.success(request,f"Todos Added from {request.user.username} Successfuly")    
-    else:
-       form = TodoForm()
-    todo = Todo.objects.filter(user=request.user)
-    if len(todo) == 0:
-        todos_done = True
-    else:
-        todos_done = False
-    context = {'todos':todo,'form':form,'todos_done':todos_done}
-    return render(request, 'pages/todo.html', context)
-
-def update_todo(request,pk=None):
-    todo = Todo.objects.get(id=pk)
-    if todo.is_finished == True:
-        todo.is_finished = False
-    else:
-        todo.is_finished = True
-    todo.save()
-    return redirect('todo')
-
-def delete_todo(request,pk=None):
-    Todo.objects.get(id=pk).delete()
-    return redirect("todo")
-
-def wiki(request):
     if request.method == 'POST':
-        text = request.POST['text']
-        form = DashboardForm(request.POST)
-        search = wikipedia.page(text)
-        context = {
-            'form':form,
-            'title':search.title,
-            'link':search.url,
-            'details':search.summary
-        }
-        return render(request,"pages/wiki.html",context)
+        form = RatingForm(request.POST)
+        if form.is_valid():
+            rating = form.save(commit=False)
+            rating.item = item
+            rating.save()
+            rating.delete_session(request)
+            request.session[SESSION_RATING_ID] = rating.id
+            return redirect('item_detail', pk=item.pk)
     else:
-        form = DashboardForm()
-        context = {'form':form}
-    return render(request, 'pages/wiki.html', context)
+        if rating_id:
+            rating = get_object_or_404(Rating, pk=rating_id)
+            form = RatingForm(instance=rating)
+        else:
+            form = RatingForm()
 
-def profile(request):
-    homeworks = Homework.objects.filter(is_finished=False,user=request.user)
-    todos = Todo.objects.filter(is_finished=False,user=request.user)
-    if len(homeworks) == 0:
-        homework_done = True
-    else:
-        homework_done = False
-    if len(todos) == 0:
-        todos_done = True
-    else:
-        todos_done = False
+    return render(request, 'rate_item.html', {'form': form, 'item': item})
+
+@login_required
+def home(request):
+    member = Member.objects.filter(user=request.user)
     context = {
-        'homeworks':homeworks,
-        'todos':todos,
-        'homework_done': homework_done,
-        'todos_done': todos_done
+        'members':member
     }
-    return render(request, 'pages/profile.html', context)
+    return render(request, 'pages/home.html', context)
 
+@login_required
 def courses(request):
-    return render(request, 'pages/courses.html', {})
+    # username = request.user.get_username()
+    # print(username)
+    # print('FROM VIEW', id)
+
+    id = request.user.username
+    courses_man, courses_not_man= predict(id)
+    
+    return render(request, 'pages/courses.html', {'courses_man':courses_man ,'courses_not_man':courses_not_man})
 
 def About_us(request):
     return render(request, 'pages/About_us.html', {})
 
 
-def Login(request):
-    return render(request, 'pages/Login.html', {})
+def register(request):
+    form= UsersRegisterForm()
+    if request.method == 'POST':
+        form= UsersRegisterForm(request.POST)
+        if form.is_valid():
+             form.save()
+             username=form.cleaned_data.get('username')
+             messages.success(request,f"Account Creates for {username}")
+             return redirect('login')
+    else:
+        form= UsersRegisterForm()
 
+    context = {
+        'form':form
+    }
+    return render(request, 'pages/register.html', {'form':form})
+
+# def login(request):
+#     form = UsersForm()
+#     if request.method == 'Post':
+#         form =  UsersForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('home')    
+#         else:
+#             form = UsersForm()
+#             # context = {'form':form}
+#     return render(request, 'pages/login.html', {'form':form})
+#     # if request.method == 'Post':
+#     #     userid= request.POST('ID')
+#     #     user = authenticate(request, SID=userid)
+#     #         if user is not None:
+#     #             return render(request, 'pages/home.html', {})
+#     #         else:
+#     #             return redirect('pages/login.html')
+#     #     except:
+#     #          return redirect('/')
+#     # else:
+#     #     return render(request, 'pages/login.html')
+#     # return render(request, 'pages/login.html')
 
 def GPACalculator(request):
     return render(request, 'pages/GPACalculator.html')
+
+

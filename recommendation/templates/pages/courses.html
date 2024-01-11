@@ -1,128 +1,523 @@
-<!DOCTYPE html>
 {% load static %}
+{% block content %} 
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Student-dashboard</title>
-    
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="{% static 'css/new.css' %}">
+  <title>SciGuide</title>
+  <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}"/>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+   <!-- font awesome cdn link  -->
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="{% static 'css/button.css' %}">
+   <link rel="stylesheet" href="{% static 'css/land1.css' %}">
+   <link rel="stylesheet" href="{% static 'css/feed.css' %}">
+   
+   <!-- Compiled and minified CSS -->
+   <link
+     href="https://fonts.googleapis.com/css?family=Roboto"
+     rel="stylesheet"
+   />
+  
 </head>
 <body>
-
-{% block content %}
-
-<header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'home' %}"> <img class="logo" src="{% static 'images/logo~2.png' %}" width="150" hight="50" alt="Notes image"></a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    
   
-    <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-          <ul class="navbar-nav mb-2 mb-lg-0">
-            {% if user.is_authenticated  %}
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'profile' %}">Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'About_us' %}">About_us</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Options
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{% url 'courses' %}">Courses</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{% url 'wiki' %}">Wikipedia</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{% url 'todo' %}">To-do</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{% url 'homework' %}">Homework</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="notes">Notes</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{% url 'GPACalculator' %}">GPACalculator</a>
-                <div class="dropdown-divider"></div>
-              </div>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-            </li>
-            {%else%}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Login</a>
-            </li>
-            {% endif %}
-          </ul>
-        </div>
-  </div>
-  </nav>
-</header>
-<br><br><br><br>
-
-      <br>
-      <h3 style="text-align: center;">Courses</h3>
-      <hr>
-<div class="row">
-    <div class="container text-center">
+    <main>
       
-        <div class="cont">
-          <div class="col-md-3">
-            <div class="feat">
-              <div class="card">
-                <div class="card-body">        
-                     <h3> Image processing </h3><hr>
-                    <h6> &emsp; &ensp;  04023332 
-                     <br>&emsp; &ensp;   3 Hours </h6>
-                        <button class="btn">Details</button>
-                  </div>
-                </div>
-              </div>
-          </div>
+    <header class="navbar navbar-expand navbar-fixed-top" style="background-color: #ffff;; box-shadow: 2px 2px 5px #183d69 ;">
+    <img class="logo" src="{% static 'images/logo~2.png' %}" width="120" hight="10%"alt="Notes image">
+      <a id="linkk" class="btn btn-outline-danger" href="{% url 'logout' %}">Log Out</a>  
+    </header>
+
+      <!-- Start project-->
+  <div class="continer text-center">
+    <div class="landing">
+      <div id="chatbutton">
+        <button id="chat" type="button"  data-toggle="modal"
+        data-target="#myModal">GPA (<span class="total-count"></span>) </button>
         </div>
+        
+        <div id="fixed-social">
+          <div>
+          
+          <div>
+            <a class="fixed-gplus"><i class="bi bi-browser-edge"></i>  <span>Recommended 1</span></a>
+          </div>
+          <div>
+            <a class="fixed-linkedin"><i class="bi bi-browser-edge"> </i> <span>Recommended 2</span></a>
+          </div>
+          <div>
+            <a class="fixed-instagrem" ><i class="bi bi-browser-edge"> </i> <span>Recommended 3</span></a>
+          </div>
+         </div>
+        </div>
+      <div class="container">
+        
+          
+        <div class="text">
+          <h1>Welcome {{user.username}}</h1>
+          <br>
+         <a href="#bgrb"  class="allbutton">
+            All     </a> <br>
+            <a href="#bgrb">
+              <div class="button one" target="2">المواد الإختيارية</div>    </a>
+              <a href="#bgrb">
+                <div  class="button two" target="1">المواد الإجبارية</div> </a> 
+              
+    </div>
+        <div class="image">
+          <img src="{% static 'images/1-removebg-preview.png' %}" alt="" />
+        </div> 
+      </div>
+     
+    </div>
+    <!-- End Landing -->
+    
+    <div id="progress">
+      <span id="progress-value">&#x1F815;</span>
+    </div>
+    <div id="bgrb" class="container">
+      
+      
+      <section>
+        
+        <div class="container" style="width:auto " style="position: relative;
+        min-height: 460px;
+        max-width: 800px;">
+        <div class="div1 single" style="width:auto ">
+          <br><br><br>
+            <h3 style="text-shadow: 2px 2px 5px #eee;font-size:2.5em;font-weight: bold;"> المواد الإجبارية </h3><br>
+          <div class="divtbl" >
+
+          <table id="customers">
+            <tr>
+              <th>Order</th>
+              <th>Courses</th>
+              <th>ID</th>
+              <th>Course Hours</th>
+              <th>Program</th>
+              <th>Frequent Semester</th>
+              <th>Opens # courses</th>
+              <th>Opens # Mandatory</th>
+              <th>List of Opened Courses</th>
+              <th>Grades</th>
+              <th>Expected Grade</th>
+              <th>Calculate</th>
+            </tr>
+
+            {% for course in courses_man %}
+            <tr>
+              {% cycle  '#00AF54' '#00AF54' '#00AF54' '#FFC41E' '#FFC41E' '#FFC41E' as bgcolor silent %} 
+               {% if forloop.counter >= 7 %}
+               {% cycle  '#ED2B29' as bgcolor silent %}
+               {% endif %}
+              <td><i class="bi bi-browser-edge" style='color:{{ bgcolor }}'>  {{ forloop.counter }}</i> 
+              </button></td>
+              {% cycle '#F0F0F0' 'white'  as bcolor silent %}
+              <td>{{ course.name }}</td>
+              <td>{{course.id}}</td>
+              <td>{{ course.credit }}</td>
+
+              <td>
+                {% if course.program == 0 %}
+                Minor
+               {%else%}
+                Major
+               {% endif %}
+              </td>
+
+               <td >
+                      
+                    {% for semester in  course.Semester %} 
+                    {% if semester == '1' %}
+                    Fall
+                    {%elif semester == '2' %}
+                    Spring
+                    {%else%}
+                    Summer
+                    {% endif %}
+                    {% endfor %}
+                   
+                  </td>
+
+              <td>{{course.opens}}</td>
+              <td>{{ course.NumberMandatory }}</td>
+
+
+              <td><button type="button" class="btn btn-success exploder">
+                  <span class="glyphicon glyphicon-search"></span>
+              </td>
+
+                 
+
+                 
+                  <td>
+                      {% if course.Grade > 7 %}
+                       High
+                      {%elif course.Grade <= 7 and course.Grade >= 5 %}
+                       Medium
+                      {%else%}
+                      Low
+                      {% endif %}
+    
+                  </td>
+
+                  <td>
+                  {% if course.Score > 7 %}
+                   High
+                  {%elif course.Score <= 7 and course.Score >= 5 %}
+                   Medium
+                  {%else%}
+                  Low
+                  {% endif %}
+                  </td>
+
+                    <td>
+                      <button type="button" data-name="{{ course.name }}"
+                        data-price="{{ course.credit }}"
+                        class="default-btn border-radius-5">
+                        Add to gpa
+
+                      </button>
+
+                      <!-- <div class="featured-content-list">
+                <button type="button" data-name="{{ course.name }}" data-price="{{ course.credit }}" class="default-btn border-radius-5"> Add To GPA</button>
+              </div> -->
+                    </td>
+
+                  </tr>
+                  <tr class="explode hide">
+                    <td colspan="12" style=" background:white; display: none;">
+                      <table class="table table-condensed">
+                        <thead>
+                          <tr>
+                            <th style="background:rgb(53, 53, 63); color:white;">Courses</th>
+                            <th style="background:rgb(53, 53, 63); color:white;">Credit</th>
+                            <th style="background:rgb(53, 53, 63); color:white;">Type</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        
+                          {% for name, type, hours in course.openedCourses%}
+                          <tr>
+                            <td>{{name}} </td>
+                            <td>{{hours}}</td>
+                            <td>
+                              {%if type == 1 %}
+                              إجباري
+                              {% elif type == 0 %}
+                              اختياري
+                              {% else %}
+                              اختيار حر 
+                              {% endif %}
+                            </td>
+                          </tr>
+                    {% endfor %}
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </table>
+              </div>
+            </div>
+        <div class="div2 single">
+          <br><br><br>
+
+        <h3 style="text-shadow: 2px 2px 5px #eee;font-size:2.5em;font-weight: bold;"> المواد الإختيارية </h3><br>
+     
+      <div class="divtbl" >
+      <table id="customers">
+         <tr>
+              <th>Order</th>
+              <th>Courses</th>
+              <th>ID</th>
+              <th>Course Hours</th>
+              <th>Program</th>
+              <th>Frequent Semester</th>
+              <th>Opens # courses</th>
+              <th>Opens # Mandatory</th>
+              <th>List of Opened Courses</th>
+              <th>Grades</th>
+              <th>Expected Grade</th>
+              <th>Calculate</th>
+            </tr>
+
+        {% for course in courses_not_man %}
+        <tr>
+          {% cycle  '#00AF54' '#00AF54' '#00AF54' '#FFC41E' '#FFC41E' '#FFC41E' as bgcolor silent %} 
+          {% if forloop.counter >= 7 %}
+          {% cycle '#ED2B29' as bgcolor silent %}
+          {% endif %}
+         <td><i class="bi bi-browser-edge" style='color:{{bgcolor}}'>   {{ forloop.counter }}</i> </td>
+         {% cycle '#F0F0F0' 'white'  as bcolor silent %}
+          <td style="font-size:1.4em;
+          font-weight: 500; color: black; " class="itemName"> {{ course.name }}</td>
+          <td> {{course.id}}</td>
+          <td>{{ course.credit }} </td>
+          <td>
+                {% if course.program == 0 %}
+                Minor
+               {%else%}
+                Major
+               {% endif %}
+              </td>
+
+               <td >
+                      
+                    {% for semester in  course.Semester %} 
+                    {% if semester == '1' %}
+                    Fall
+                    {%elif semester == '2' %}
+                    Spring
+                    {%else%}
+                    Summer
+                    {% endif %}
+                    {% endfor %}
+                   
+                  </td>
+
+              <td>{{course.opens}}</td>
+              <td>{{ course.NumberMandatory }}</td>
+
+
+              <td><button type="button" class="btn btn-success exploder">
+                  <span class="glyphicon glyphicon-search"></span>
+              </td>
+
+           <td>
+                      {% if course.Grade > 7 %}
+                       High
+                      {%elif course.Grade <= 7 and course.Grade >= 5 %}
+                       Medium
+                      {%else%}
+                      Low
+                      {% endif %}
+    
+                    </td>
+
+                   <td>
+                  {% if course.Score > 7 %}
+                   High
+                  {%elif course.Score <= 7 and course.Score >= 5 %}
+                   Medium
+                  {%else%}
+                  Low
+                  {% endif %}
+                  </td>
+          <td>
+              <button type="button" data-name="{{ course.name }}"
+                data-price="{{ course.credit }}"
+                class="default-btn border-radius-5">
+                Add to gpa
+              </button>
+            </td>
+          </tr>
+          <tr class="explode hide">
+            <td colspan="12" style=" background:white; display: none;">
+              <table class="table table-condensed">
+                <thead>
+                  <tr>
+                    <th style="background:rgb(53, 53, 63); color:white;">Courses</th>
+                    <th style="background:rgb(53, 53, 63); color:white;">Credit</th>
+                    <th style="background:rgb(53, 53, 63); color:white;">Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for name, type, hours in course.openedCourses%}
+                          <tr>
+                            <td>{{name}} </td>
+                            <td>{{hours}}</td>
+                            <td>
+                              {%if type == 1 %}
+                              إجباري
+                              {% elif type == 0 %}
+                              اختياري
+                              {% else %}
+                              اختيار حر 
+                              {% endif %}
+                            </td>
+                          </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
   </div>
 </div>
-<div class="popup-cont active">
-    <div class="minibox">
+      </section>
+      <div class="modal fade" id="myModal" role="dialog">
+        <!-- modal dialog -->
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="header" style="text-align: center;padding:0 15px">
+              <!-- <h1 font-size: 1em;
+             font-weight: bold; color: black >GPA Calculater</h1>   -->
+             <img src="{% static 'images/gpa1.jpg' %}" alt="Notes image" style="width: 80px;float: left;margin-top: 10px">  
+            
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="float:right;margin-top: 30px;" > 
+
+                  <span aria-hidden="true" style="font-size: 4rem; color: #3c6680;">&times;</span>
+               </button> 
+              
+            </div>
+            <br>  <br> <br><br>
+            <!-- modal body -->
+            <div class="modal-body" style="width:100%">
+             
+              <div class="divtbl" >
+                
+                <table id="customers" >
+                  
+                  <tr>
+                    <th>A</th>
+                    <th>A-</th>
+                    <th>B+</th>
+                    <th>B </th>
+                    <th>B-</th>
+                    <th>C+</th>
+                    <th>C</th>
+                    <th>C-</th>
+                    <th>D+</th>
+                    <th>D</th>
+                    <th>F</th>
+                  </tr>
+                  <tr>
+                    <td>4.00</td>
+                    <td>3.67</td>
+                    <td> 3.33</td>
+                    <td>3</td>
+                    <td>2.67</td>
+                    <td>2.33</td>
+                    <td>2</td>
+                    <td>1.67</td>
+                    <td>1.33</td>
+                    <td>1</td>
+                    <td>0</td>
+                </table> 
+                </div>
+  
+                <hr>
+              
+              <div class="divtbl" >
+                    <table id="customers">
+                    <tr>
+                      <th>Courses</th>
+                      <th>Hours</th>
+                      <th style="column-span:4;">GPA Units</th>
+                      <th>total points</th>
+                      
+                    </tr>
+                    <tbody class="show-cart table" style="font-size:1.4em;
+                    font-weight: 262; color: black;">
+                      
+                      
+                    </tbody>
+                    </table>
+                  </div>
+                    <hr>
+                    <div class="grand-total" style="font-size:1.5em;
+                  font-weight: bold; color: black;left:30%">Your GPA:  <span class="total-cart"></span></div>
+                      <span style="font-size:1.5em;
+                      font-weight: bold; color: #183d69 ; "> 
+  
+                      <i class="bi bi-mortarboard" style="font-size: 3rem; color: #183d69 ;"></i>
+  
+                       <span class="talking"></span><br>
+                       <span class="talking2"></span>
+                      </span>
+                      
+              
+            </div>
+            <!-- end modal body -->
+            <!-- modal footer-->
+            <div class="modal-footer">
+              <!-- <div class="mohe"> -->
+                <!-- <button type="submit" class="btn btn-default btn-md btn-sm" data-dismiss="modal"> SEND</button> -->
+                <button type="button"  class="clear-cart" >
+                  Clear GPA
+                </button>
+                <button type="button" class="btn" data-dismiss="modal">Close</button>
+              <!-- </div> -->
+            </div>
+            <!-- end modal footer -->
+          </div>
+          <!-- end modal content-->
+        </div>
+        <!-- end modal dialog-->
+      </div>
+      
+      </div> 
+      <br> 
+     
       <br>
-    <h3> Image processing </h3>
-    <p>04023332 </p> 
-    <p>2 hours</p>
+      <div style="background-color:black">
+        <br>
+      <h3 style="margin:10px;color:white;">Please provide us with your valuable feedback<br /><small> We take all feedbacks seriously. </small></h3>
+      <div class="con">
+        <div class="rating-wrap">
+          
+          <h2 style="color:white">Star Rating</h2>
+          <div class="center">
+            <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5"/><label for="star5" class="full" title="Awesome"></label>
+              <input type="radio" id="star4.5" name="rating" value="4.5"/><label for="star4.5" class="half"></label>
+              <input type="radio" id="star4" name="rating" value="4"/><label for="star4" class="full"></label>
+              <input type="radio" id="star3.5" name="rating" value="3.5"/><label for="star3.5" class="half"></label>
+              <input type="radio" id="star3" name="rating" value="3"/><label for="star3" class="full"></label>
+              <input type="radio" id="star2.5" name="rating" value="2.5"/><label for="star2.5" class="half"></label>
+              <input type="radio" id="star2" name="rating" value="2"/><label for="star2" class="full"></label>
+              <input type="radio" id="star1.5" name="rating" value="1.5"/><label for="star1.5" class="half"></label>
+              <input type="radio" id="star1" name="rating" value="1"/><label for="star1" class="full"></label>
+              <input type="radio" id="star0.5" name="rating" value="0.5"/><label for="star0.5" class="half"></label>
+            </fieldset>
+          </div>
+          <h4 ><button type="button">
+            <a class="dropdown-item" href="{% url 'notes' %}">Feedback</a>
+          </button></h4>
+        </div>
+      </div>
+      
     </div>
-    <div>
-    <p>Success:       70%</p>
-    <hr>
-    <p>Open:       CPL</p>
-    <hr>
-    <p>Semester:       First</p>
-    &emsp; <button class="btn" id="close-icon">Close</button>
-</div>
-{% endblock content %}
-</main>
-    <script src="{% static 'js/index.js' %}">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script> 
+   </main>
+  
+<script src="{% static 'js/done.js' %}" defer></script>
+<script src="{% static 'js/fed.js' %}" defer></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+  $(".exploder").click(function(){
+  
+  $(this).toggleClass("btn-success btn-danger");
+  
+  $(this).children("span").toggleClass("glyphicon-set-down glyphicon-zoom-out");  
+  
+  $(this).closest("tr").next("tr").toggleClass("hide");
+  
+  if($(this).closest("tr").next("tr").hasClass("hide")){
+    $(this).closest("tr").next("tr").children("td").slideUp();
+  }
+  else{
+    $(this).closest("tr").next("tr").children("td").slideDown(350);
+  }
+});</script>
 </body>
 </html>
+{% endblock %}  
+
+

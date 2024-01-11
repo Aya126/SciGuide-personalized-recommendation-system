@@ -1,16 +1,68 @@
-{% extends 'pages/base.html' %} 
+
 {% load static %} 
 {% block content %}
-    <div class="container">
+
+<head>
+    <title>Recommender</title>
+    <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Student-dashboard</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'css/edit.css' %}" />
+  </head>
+  <body>
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top" style = "background-color: #ffff;  box-shadow: 2px 2px 5px #070D59;">
+          <div class="container-fluid">
+         <img class="logo" src="{% static 'images/logo~2.png' %}" width="150" hight="50" alt="Notes image"><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          
+        
+          <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                  {% if user.is_authenticated  %}
+                  <li class="nav-item">
+                    <a class="btn-outline-info btn-lg active" aria-current="page" href="{% url 'courses' %}">courses</a>
+                  </li>
+                  &ensp; &ensp;
+                  <li class="nav-item">
+                    <a class="btn-danger btn-lg" href="{% url 'logout' %}">Logout</a>
+                  </li>
+                  {%else%}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Register</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                  </li>
+                  {% endif %}
+                </ul>
+              </div>
+        </div>
+        </nav>
+      </header><br><br>
+    <div class="container text-center">
         <div class="content-section p-0 mt-5">
             <div class="m-3">
-                <h2>{{notes.title}}</h2>
+                <h2>{{Notes.title}}</h2>
+                <h2>{{Notes.stars}}</h2>
             </div>
             <hr class="p-0 m-0">
-            <p class="description m-5 p-5">
-                {{notes.description}}
-            </p>
+            <h6 class="description m-5 p-5">
+                {{Notes.description}}
+            </h6>
             <hr>
         </div>
     </div>
+</body>
+
+</html>
 {% endblock content %}

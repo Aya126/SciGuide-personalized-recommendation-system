@@ -1,24 +1,57 @@
-{% extends 'pages/base.html' %}
+ <!DOCTYPE html>
 {% load static %}
+{% block content %} 
 {% load crispy_forms_tags %}
-{% block content %}
 
-<div class="container">
-  <form method="POST">
-    {% csrf_token %}
-    <fieldset class="form-group">
-      <legend class="border-bottom mb-4">Log In</legend>
-      {{form|crispy}}
-    </fieldset>
-    <div class="form-group">
-      <button href="" class="btn btn-outline-info" type="submit">
-        Sign In
-      </button>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SciGuide</title>
+    <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}"/>
+    <link rel="stylesheet" href="{% static 'css/a.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/button.css' %}">
+   <link rel="stylesheet" href="{% static 'css/land.css' %}">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" 
+     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+  
+   </head>
+<body>
+  <div class="container">
+  
+    <div class="cover">
+      <div class="front">
+        <img src="{% static 'images/bg1.jpg' %}" alt="" >
+        <div class="text">
+          <span class="text-1">ALEXANDRIA </span>
+          <span class="text-2">FACULY OF SCIENCE</span>
+        </div>
+      </div>
     </div>
-  </form>
-  <div class="border-top pt-3">
-    
+    <div class="forms">
+        <div class="form-content">
+          <div class="login-form">
+            <form id="login" class="active" action="" method="POST">
+                   &ensp; <h1>&ensp;&ensp;&ensp;Log In</h1>
+                      {% csrf_token %}
+                      {{form|crispy}}
+                        <button type="submit"  class="clear-cart btn-success btn-sm" >
+                          Sign In
+                        </button>
+                      <div class="form-bottom">
+                            <p class="not-registered">Dont have an account?  <a class="ml-2" href="{% url 'register'%}">Register</a></p>
+                          </div>
+                </form>
+      </div>
+    </div>
   </div>
 </div>
-
-{% endblock content %}
+<script src="{% static 'js/done.js' %}" defer></script>
+</body>
+</html>
+{% endblock %}  
