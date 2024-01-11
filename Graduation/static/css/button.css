@@ -1,0 +1,471 @@
+
+@media (max-width:991px){
+
+   html{
+      font-size: 55%;
+   }
+
+}
+
+@media (max-width:768px){
+
+   .products-preview .preview img{
+      height: 25rem;
+   }
+
+}
+
+@media (max-width:450px){
+
+   html{
+      font-size: 50%;
+   }
+
+}
+/* .landing .go-down {
+    color: var(--main-color);
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: var(--main-transition);
+  }
+  .landing .go-down:hover {
+    color: #881323;
+  }
+  .landing .go-down i {
+    animation: bouncing 1.5s infinite;
+  } */
+  /* .landing .go-down {
+   position: absolute;
+   transform: translateX(-50%);
+   transition: var(--main-transition);
+   border: none;
+   padding: 10px 20px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   margin: 4px 2px;
+   transition-duration: 0.4s;
+   cursor: pointer;
+   font-size:1.5em;
+   font-weight: normal;
+   border-radius: 10px;
+   animation: bouncing 1.5s infinite;
+  }
+  .landing .go-down:hover {
+    color: #881323;
+  }
+  .landing .go-down i {
+    animation: bouncing 1.5s infinite;
+  } */
+  img {
+    float: right;
+  }
+
+  .button,.allbutton{
+   border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    font-size:1.5em;
+    font-weight: normal;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgb(80, 78, 78);
+
+}
+
+.allbutton{
+   background-color: rgb(19, 18, 18);
+   color: white;
+}
+.allbutton:hover{
+   background-color: gainsboro;
+   color: black;
+   text-decoration: none;
+
+}
+.one{
+  background-color: rgb(19, 18, 18);
+  color: white;
+}
+.one:hover{
+  background-color: gainsboro;
+  color: black;
+}
+.two{
+  background-color: rgb(19, 18, 18);
+  color: white;
+}
+.two:hover{
+  background-color: gainsboro;
+  color: black;
+} 
+
+#linkk{
+  
+   color: #e42424;
+   transition-duration: 0.4s;
+   cursor: pointer;
+   padding: 15px 10px;
+   margin-right: 20%;
+   font-size: 1.2em;
+   font-weight: 500;
+   float: left;
+  
+}
+#linkk:hover{
+  border-bottom: 2px solid #c42915;
+
+}
+
+
+/* .btnss{
+     background-color: #fff; 
+    border: none;
+    color: #4CAF50;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px #070D59;
+    font-size:1.5em;
+    font-weight: normal; 
+}
+.btnss:hover{
+    background-color: #4CAF50;
+    color: #fff;
+} */
+
+#progress {
+    position: fixed;
+    bottom: 30px;
+    right: 10px;
+    height: 58px;
+    width: 58px;
+    display: none;
+    place-items: center;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+  #progress-value {
+    display: block;
+    height: calc(100% - 15px);
+    width: calc(100% - 15px);
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 35px;
+    color: #0077b6;
+  }
+.divtbl{
+  overflow-x: auto; 
+  box-shadow: 0 0 15px 1px gray;
+}
+  #customers {
+    
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    
+    box-shadow: 0 0 15px 2px gray;
+  }
+  #customers th {
+    border: 1px solid #3c6680;
+    padding: 8px;
+    font-size:1.3em;
+   font-weight: 350; 
+   color: black;
+  }
+  #customers td{
+    
+    
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-size:1.3em;
+    font-weight: 350; 
+    color: black;
+  }
+  
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color:  #456e8a ;
+    color: white;
+  }
+
+  /* .clear-cart{
+   background-color: #fff; 
+   border: none;
+   color: red;
+   padding: 15px 10px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 10px;
+   margin: 4px 2px;
+   transition-duration: 0.4s;
+   cursor: pointer;
+   border-radius: 10px;
+   font-size: 1.2em;
+    font-weight: 500;
+  }  */
+   #chat {
+    position: relative;
+   background: #0077b6;
+   color: #fff;
+   padding: 10px 10px;
+   height:58px;
+   width: 58px;
+   border-radius: 120px;
+   border: none;
+   z-index: 100;
+ }
+
+ #chat:hover{
+   background: #0096c7;
+   color: #fff;
+ }
+ 
+ #chatbutton {
+   display: block;
+   position: fixed;
+   bottom: 110px;
+   right: 10px;
+ } 
+ 
+
+.default-btn {
+	/* position: relative; */
+	width: 100px;
+	height: 50px;
+  font-size: 13px;
+	border: 0;
+	background-color: #456e8a;
+  border-radius: 999px;
+  box-shadow: #456e8a 0 10px 20px -10px;
+	outline: none;
+	cursor: pointer;
+	color: #fff;
+	transition: .3s ease-in-out;
+	overflow: hidden;
+
+
+  
+}
+.default-btn:hover {
+	background-color: #376079;
+}
+.default-btn:active {
+	transform: scale(.9);
+}
+
+
+/* .default-btn span {
+	position: absolute;
+	z-index: 3;
+	left: 50%;
+	top: 50%;
+	font-size: 1.2em;
+	color: #fff;
+	transform: translate(-50%,-50%);
+}
+.default-btn span.add-to-cart {
+	opacity: 1;
+}
+.default-btn span.added {
+	opacity: 0;
+}
+
+.default-btn.clicked span.add-to-cart {
+	animation: txt1 1.5s ease-in-out forwards;
+}
+.default-btn.clicked span.added {
+	animation: txt2 1.5s ease-in-out forwards;
+} */
+
+@keyframes txt1 {
+	0% {
+		opacity: 1;
+	}
+	20%, 100% {
+		opacity: 0;
+	}
+}
+@keyframes txt2 {
+	0%, 80% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+
+
+/* fixed social*/
+#fixed-social {
+  position: fixed;
+  bottom: 40%;
+}
+
+#fixed-social a {
+  color: #fff;
+  display: block;
+  height: 40px;
+  position: relative;
+  text-align: center;
+   line-height: 40px;
+  width: 40px;
+  margin-bottom: 1px;
+  z-index: 2;
+}
+#fixed-social a:hover>span{
+ visibility: visible;
+ left: 41px;
+ opacity: 1;
+} 
+#fixed-social a span {
+ line-height: 40px;
+   left: 60px;
+   position: absolute;
+   text-align: center;
+   width: 120px;
+   visibility: hidden;
+   transition-duration: 0.5s;
+   z-index: 1;
+   opacity: 0;
+}
+
+.fixed-gplus{
+ background-color: #00AF54;
+
+}
+.fixed-gplus span{
+  background-color: #00AF54;
+}
+.fixed-linkedin{
+ background-color: #FFC41E;
+
+}
+.fixed-linkedin span{
+  background-color: #FFC41E;
+}
+.fixed-instagrem{
+ background-color: #ED2B29;
+
+}
+.fixed-instagrem span{
+  background-color: #ED2B29;
+}
+/*end fixed social*/
+.modal-body .form-control {
+  border-radius: 10px;
+  margin-right: 0.25em;
+  padding: 0.15em;
+}
+
+
+.modal-header {
+  background: white;
+}
+
+.modal-body .form-group {
+  text-align: left;
+}
+
+
+
+
+.modal-footer {
+  background: white;
+}
+
+.clear-cart {
+  position: relative;
+	width: 100px;
+	height: 50px;
+  font-size: 18px;
+	border: 0;
+  background-color: #c42915;
+  box-shadow: gray 0 10px 20px -10px;
+	outline: none;
+	cursor: pointer;
+	color: #fff;
+    border-radius: 0.35em;  
+    transition: transform 0.2s linear; 
+    box-sizing: border-box;
+    box-shadow: 2px 2px 2px #494747;
+  
+}
+.clear-cart:hover {
+  filter: brightness(0.8);
+  color: #FFFFFF;
+  
+  }
+
+  .modal-footer .btn {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    font-size: 18px;
+    border: 0;
+   
+    background-color: #456e8a;
+    box-shadow: gray 0 10px 20px -10px;
+    outline: none;
+    cursor: pointer;
+    color: #FFFFFF;
+      border-radius: 0.35em;  
+      transition: transform 0.2s linear; 
+      box-sizing: border-box;
+      box-shadow: 2px 2px 2px #494747;
+    
+  }
+  .modal-footer .btn:hover {
+    filter: brightness(0.8);
+    color: #FFFFFF;
+    
+    }
+  
+
+
+
+    /* //////////////////////////////////// */
+    .star-rating input[type="radio"] {
+      display: none;
+  }
+  
+  .star-rating label {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background-image: url(star.png);
+      background-size: contain;
+      cursor: pointer;
+  }
+  
+  .star-rating input[type="radio"]:checked + label {
+      background-image: url(star-filled.png);
+  }
+
+  /* // /////////// */
+
+   /* tr{
+    background: #00AF54;
+  } */
