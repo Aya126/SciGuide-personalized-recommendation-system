@@ -271,6 +271,7 @@ If you encounter issues:
 If you are not using ssl you will encounter issues with job submission issue, you need to configure the session store settings. This is a common issue when Open OnDemand is not running over HTTPS.
 
 **Problem**: Job submission may fail or sessions may not persist properly due to HTTP 422 Error / InvalidAuthenticityToken.
+
             ![Alt text](fourth.png)
 
 
@@ -359,6 +360,7 @@ systemctl restart ondemand-portal 2>/dev/null || true
 > **Security Note**: This configuration is suitable for development and testing environments. For production deployments, consider setting up HTTPS and using secure cookies.
 
 **The Open OnDemand main dashboard showing the integrated access point for HPC resources**
+
 ![Alt text](fifth.png)
 
 **More details about the submitted job**
