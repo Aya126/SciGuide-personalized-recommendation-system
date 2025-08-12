@@ -272,8 +272,7 @@ If you are not using ssl you will encounter issues with job submission issue, yo
 
 **Problem**: Job submission may fail or sessions may not persist properly due to HTTP 422 Error / InvalidAuthenticityToken.
 
-            ![Alt text](fourth.png)
-
+![Alt text](fourth.png)  
 
 **Solution**: Configure session stores to work with HTTP (non-secure) connections.
 **OOD has multiple Rails apps running**
