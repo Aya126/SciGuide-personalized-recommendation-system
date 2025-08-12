@@ -181,7 +181,7 @@ After these steps, you should be able to access the Jobs section and see job tem
 
 *Job Composer showing available simple templates and job management interface just for testing*
 
-￼                                     ￼
+![Alt text](second.png)                                     ![Alt text](third.png)
 
 ### Configure Slurm Cluster Integration
 
@@ -271,7 +271,7 @@ If you encounter issues:
 If you are not using ssl you will encounter issues with job submission issue, you need to configure the session store settings. This is a common issue when Open OnDemand is not running over HTTPS.
 
 **Problem**: Job submission may fail or sessions may not persist properly due to HTTP 422 Error / InvalidAuthenticityToken.
-             ￼
+            ![Alt text](fourth.png)
 
 
 **Solution**: Configure session stores to work with HTTP (non-secure) connections.
@@ -359,11 +359,11 @@ systemctl restart ondemand-portal 2>/dev/null || true
 > **Security Note**: This configuration is suitable for development and testing environments. For production deployments, consider setting up HTTPS and using secure cookies.
 
 **The Open OnDemand main dashboard showing the integrated access point for HPC resources**
-￼
+![Alt text](fifth.png)
 
 **More details about the submitted job**
  
-￼
+![Alt text](sixth.png)
 
 
 #Then do
