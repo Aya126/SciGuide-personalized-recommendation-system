@@ -150,7 +150,7 @@ systemctl restart httpd
 
 *The Open OnDemand main dashboard showing the integrated access point for HPC resources*
 
-￼
+![Alt text](first.png)
 
 
 ### Configure Job Simple Templates and User Permissions For Testing
