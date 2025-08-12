@@ -288,7 +288,7 @@ If you are not using ssl you will encounter issues with job submission issue, yo
 # This is where the system-wide job composer app lives.
 # We change this so session cookies are allowed over HTTP.
 vi /var/www/ood/apps/sys/myjobs/config/initializers/session_store.rb
-# Force Rails to store session cookies over HTTP (no SSL)
+# And Add Force Rails to store session cookies over HTTP (no SSL)
 Rails.application.config.session_store :cookie_store, key: '_job_constructor_session', secure: false
 
 ```
@@ -305,7 +305,7 @@ sudo mkdir -p /etc/ood/config/apps/myjobs/initializers/
 vi /etc/ood/config/apps/my_jobs/config/initializers/session_store.rb
 vi /etc/ood/config/apps/my_jobs/initializers/session_store.rb
 
-# MyJobs session cookie settings for HTTP (no SSL)
+# And Add MyJobs session cookie settings for HTTP (no SSL)
 Rails.application.config.session_store :cookie_store, key: '_myjobs_session', secure: false
 
 ```
@@ -316,6 +316,7 @@ Rails.application.config.session_store :cookie_store, key: '_myjobs_session', se
 
 # This is a "force override" file that some deployments use to replace upstream settings.
 vi /etc/ood/config/apps/my_jobs/config/initializers/session_store_override.rb
+#And Add
 Rails.application.config.session_store :cookie_store, key: '_myjobs_session', secure: false
 
 ```
@@ -330,7 +331,7 @@ sudo mkdir -p /etc/ood/config/apps/dashboard/initializers/
 # The dashboard app is separate and also needs HTTP-compatible cookies.
 vi /etc/ood/config/apps/dashboard/config/initializers/session_store.rb
 vi /etc/ood/config/apps/dashboards/initializers/session_store.rb
-# Dashboard session cookie settings for HTTP (no SSL)
+# And Addd Dashboard session cookie settings for HTTP (no SSL)
 Rails.application.config.session_store :cookie_store, key: '_dashboard_session', secure: false
 
 ```
